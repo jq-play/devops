@@ -1,5 +1,6 @@
 import re
 import argparse
+from os import chdir
 
 
 def main(file_input, file_output):
@@ -35,5 +36,7 @@ if __name__ == '__main__':
 
     input_file = args.input
     out = args.output
+
+    chdir('../../')
 
     main(input_file, out)
