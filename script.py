@@ -37,7 +37,7 @@ if __name__ == '__main__':
     input_file = args.input
     out = args.output
 
-    # chdir('../../')
+    chdir('workflow-test')
 
     print(listdir())
     print(listdir('..'))
