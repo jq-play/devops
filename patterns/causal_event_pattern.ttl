@@ -1,0 +1,449 @@
+@prefix : <http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kwgr: <http://stko-roy.geog.ucsb.edu/lod/resource/> .
+@prefix modl: <https://archive.org/services/purl/domain/modular_ontology_design_library> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix kwg-ont: <http://stko-roy.geog.ucsb.edu/lod/ontology/> .
+@prefix kwg-pat: <http://stko-roy.geog.ucsb.edu/lod/patterns#> .
+@prefix opla-cp: <http://ontologydesignpatterns.org/opla-cp#> .
+@prefix opla-sd: <http://ontologydesignpatterns.org/opla-sd#> .
+@prefix opla-core: <http://ontologydesignpatterns.org/opla-core#> .
+@base <http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern> .
+
+<http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern> rdf:type owl:Ontology ;
+                                                                   opla-core:hasPatternName "Causal Event Pattern" ;
+                                                                   opla-cp:addressesScenario """Direct Relief
+Hurricanes happen in Mozambique; Hurricanes disrupt sewer systems; Cholera is endemic to sub-Saharan region; Mozambique is in Sub-Saharan region; disrupted sewer systems lead to Cholera outbreaks; \"this\" Hurricane disrupted sewer systems in Mozambique; there were recent outbreaks of Cholera in Mozambique; Mozambique is experiencing a Cholera outbreak due to \"this\" Hurricane; Cholera outbreaks lead to Vaccination programs"""^^xsd:string ,
+                                                                                             """Thomas Fire
+Thunderstorm in Ventura County results in Wildfire in Ventura County
+Wildfire in Ventura County results in low air quality in Santa Barbara
+Low air quality in Santa Barbara results in evacuations in Santa Barbara"""^^xsd:string ;
+                                                                   opla-cp:hasCompetencyQuestion "Are there areas in other states than California that are frequently affected by wildfires?"^^xsd:string ,
+                                                                                                 "Given fire x, which regions will be effected by smoke exposure, given current wind direction projections?"^^xsd:string ,
+                                                                                                 "How were the 2019 Southern California fires affecting the tourism industry?"^^xsd:string ,
+                                                                                                 "If I am an agent of an insurance company, what information I can gain from your KWG? (not a competency question, but may help us to think)"^^xsd:string ,
+                                                                                                 "Was the Cholera outbreak in Mozambique contributing to the food shortage in year x?"^^xsd:string ,
+                                                                                                 "What are the causalities of the wildfire? To answer it, we need spatiotemporal information of temperature, precipitation, soil moisture and etc. in the KG."^^xsd:string ,
+                                                                                                 "What factors can you find in a specific region that would help explain e.g. the stroke belt. Which contaminants of farms may be related from the health literature to strokes?"^^xsd:string ,
+                                                                                                 "What farmlands or vegetation covers have been mostly affected in the fire?"^^xsd:string ,
+                                                                                                 "What were the reasons for the landslide east of Santa Barbara in April 2017?"^^xsd:string ,
+                                                                                                 "What were wildfires affecting the Ventura area in the 2010s?"^^xsd:string ,
+                                                                                                 "Where are areas of increased heat exceedance and pollution, where migration is not driven by urbanization?"^^xsd:string ,
+                                                                                                 "Where are the places where heat is rising and migration is occurring that cannot be explained by urbanization?"^^xsd:string ,
+                                                                                                 "Which farm has High productivity and low connectivity?"^^xsd:string ,
+                                                                                                 "Which farm has adopted health soil practice after other nearby farms did so?"^^xsd:string ,
+                                                                                                 "Which farm has experienced disease?"^^xsd:string ,
+                                                                                                 "Which region affected by a transmissive disease is affected by a hurricane?"^^xsd:string ,
+                                                                                                 "Which region affected by the current hurricane just suffers from another natural disaster?"^^xsd:string ,
+                                                                                                 "Which regions affected by wildfires are expected to experience heavy rain (flood risk)"^^xsd:string ,
+                                                                                                 "Which residents are still evacuated from the same region where the second hurricane hit?"^^xsd:string ,
+                                                                                                 "where to deliver Covid-19 supplies?"^^xsd:string ;
+                                                                   opla-sd:hasAbbreviations """STE SpatiotemporalExtent
+PCR possiblyCausesRelation"""^^xsd:string ;
+                                                                   opla-sd:hasConnections """Place hasSTE STE
+Event(Concrete) hasSTE STE existential
+Event(Concrete) affects Place
+Event(Concrete) ofType Event(Abstract)
+Event(Concrete) hasResultsInRelation ResultsInRelation inverse-existential
+STE overlapsWith STE
+StateOfAffairs pertainsTo STE
+StateOfAffairs indicates Event(Concrete)
+StateOfAffairs hasConstituent Observation
+ResultsInRelation resultsIn StateOfAffairs existential
+ResultsInRelation accordingToWhom Provenance
+Observation accordingToWhom Provenance
+Observation hasSTE STE
+Observation hasObservationType ObservationType
+ObservationType pertainsTo Event(Abstract)
+Event(Abstract) hasPCR PCR inverse-existential
+PCR resultsIn Event(Abstract) existential
+PCR accordingToWhom Provenance"""^^xsd:string ;
+                                                                   opla-sd:hasExampleDiagramFileName "causal-event-example.pdf"^^xsd:string ;
+                                                                   opla-sd:hasSchemaDiagramFileName "causal-event-pattern.pdf"^^xsd:string ;
+                                                                   dc:contributor "Alicia Scheill" ,
+                                                                                  "Dalia Varanka" ,
+                                                                                  "Dean Rehberger" ,
+                                                                                  "Gengchen Mai" ,
+                                                                                  "Krzysztof Janowicz" ,
+                                                                                  "Ling Cai" ,
+                                                                                  "Lu Zhou" ,
+                                                                                  "Lynn E. Usery" ,
+                                                                                  "Mark Schildhauer" ,
+                                                                                  "Rui Zhu" ;
+                                                                   dc:creator "Cogan Shimizu" ,
+                                                                              "Joseph Zalewski" ,
+                                                                              "Pascal Hitzler" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://ontologydesignpatterns.org/opla-core#hasPatternName
+opla-core:hasPatternName rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-core#isNativeTo
+opla-core:isNativeTo rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-core#reusesPatternAsTemplate
+opla-core:reusesPatternAsTemplate rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-cp#addressesScenario
+opla-cp:addressesScenario rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-cp#hasCompetencyQuestion
+opla-cp:hasCompetencyQuestion rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#hasAbbreviations
+opla-sd:hasAbbreviations rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#hasConnections
+opla-sd:hasConnections rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#hasExampleDiagramFileName
+opla-sd:hasExampleDiagramFileName rdf:type owl:AnnotationProperty .
+
+
+###  http://ontologydesignpatterns.org/opla-sd#hasSchemaDiagramFileName
+opla-sd:hasSchemaDiagramFileName rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/contributor
+dc:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#affects
+:affects rdf:type owl:ObjectProperty ;
+         opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#hasConstituent
+:hasConstituent rdf:type owl:ObjectProperty ;
+                opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#hasObservationType
+:hasObservationType rdf:type owl:ObjectProperty ;
+                    opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#hasPossiblyCausesRelation
+:hasPossiblyCausesRelation rdf:type owl:ObjectProperty ;
+                           opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#hasResultsInRelation
+:hasResultsInRelation rdf:type owl:ObjectProperty ;
+                      opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#hasSTE
+:hasSTE rdf:type owl:ObjectProperty ;
+        opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#occursOver
+:occursOver rdf:type owl:ObjectProperty ;
+            opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#ofType
+:ofType rdf:type owl:ObjectProperty ;
+        opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#pertainsTo
+:pertainsTo rdf:type owl:ObjectProperty ;
+            opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#possiblyCauses
+:possiblyCauses rdf:type owl:ObjectProperty ;
+                opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#resultsIn
+:resultsIn rdf:type owl:ObjectProperty ;
+           opla-core:isNativeTo :Causal_Event_Module .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontologydesignpatterns.org/opla-core#Module
+opla-core:Module rdf:type owl:Class .
+
+
+###  http://ontologydesignpatterns.org/opla-core#Pattern
+opla-core:Pattern rdf:type owl:Class .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#EntityWithProvenance
+:EntityWithProvenance rdf:type owl:Class ;
+                      opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#Event-Abstract
+:Event-Abstract rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasPossiblyCausesRelation ;
+                                  owl:allValuesFrom :PossiblyCausesRelation
+                                ] ;
+                opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#Event-Concrete
+:Event-Concrete rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :affects ;
+                                  owl:allValuesFrom :Place
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasResultsInRelation ;
+                                  owl:allValuesFrom :ResultsInRelation
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :occursOver ;
+                                  owl:allValuesFrom :SpatioTemporalExtent
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :ofType ;
+                                  owl:allValuesFrom :Event-Abstract
+                                ] ;
+                opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#Observation
+:Observation rdf:type owl:Class ;
+             rdfs:subClassOf :EntityWithProvenance ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasObservationType ;
+                               owl:allValuesFrom :ObservationType
+                             ] ;
+             opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#ObservationType
+:ObservationType rdf:type owl:Class ;
+                 opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#Place
+:Place rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasSTE ;
+                         owl:someValuesFrom :SpatioTemporalExtent
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasSTE ;
+                         owl:allValuesFrom :SpatioTemporalExtent
+                       ] ;
+       opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#PossiblyCausesRelation
+:PossiblyCausesRelation rdf:type owl:Class ;
+                        rdfs:subClassOf :EntityWithProvenance ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :possiblyCauses ;
+                                          owl:someValuesFrom :Event-Abstract
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty [ owl:inverseOf :hasPossiblyCausesRelation
+                                                         ] ;
+                                          owl:someValuesFrom :Event-Abstract
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :possiblyCauses ;
+                                          owl:allValuesFrom :Event-Abstract
+                                        ] ;
+                        opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#ResultsInRelation
+:ResultsInRelation rdf:type owl:Class ;
+                   rdfs:subClassOf :EntityWithProvenance ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :resultsIn ;
+                                     owl:someValuesFrom :StateOfAffairs
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty [ owl:inverseOf :resultsIn
+                                                    ] ;
+                                     owl:someValuesFrom :Event-Concrete
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :resultsIn ;
+                                     owl:allValuesFrom :StateOfAffairs
+                                   ] ;
+                   opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#SpatioTemporalExtent
+:SpatioTemporalExtent rdf:type owl:Class ;
+                      opla-core:isNativeTo :Causal_Event_Module .
+
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#StateOfAffairs
+:StateOfAffairs rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasConstituent ;
+                                  owl:allValuesFrom :Observation
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :pertainsTo ;
+                                  owl:allValuesFrom :SpatioTemporalExtent
+                                ] ;
+                opla-core:isNativeTo :Causal_Event_Module .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://stko-roy.geog.ucsb.edu/lod/patterns/causal-event-pattern#Causal_Event_Module
+:Causal_Event_Module rdf:type owl:NamedIndividual ,
+                              opla-core:Module ;
+                     opla-core:reusesPatternAsTemplate <https://archive.org/services/purl/domain/modular_ontology_design_library/causalevent> .
+
+
+###  https://archive.org/services/purl/domain/modular_ontology_design_library/causalevent
+<https://archive.org/services/purl/domain/modular_ontology_design_library/causalevent> rdf:type owl:NamedIndividual ,
+                                                                                                opla-core:Pattern ;
+                                                                                       rdfs:label "Causal Event"^^xsd:string .
+
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+[ rdfs:comment "This is an entity positioning annotation generated by CoModIDE (https://comodide.com/). Removing this annotation will break rendering the CoModIDE schema diagram view."@en
+ ] .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:Restriction ;
+   owl:onProperty :affects ;
+   owl:someValuesFrom :Place ;
+   rdfs:subClassOf :Event-Concrete
+ ] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasConstituent ;
+  owl:someValuesFrom :Observation ;
+  rdfs:subClassOf :StateOfAffairs
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasObservationType ;
+  owl:someValuesFrom :ObservationType ;
+  rdfs:subClassOf :Observation
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasPossiblyCausesRelation ;
+  owl:someValuesFrom :PossiblyCausesRelation ;
+  rdfs:subClassOf :Event-Abstract
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasResultsInRelation ;
+  owl:someValuesFrom :ResultsInRelation ;
+  rdfs:subClassOf :Event-Concrete
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :hasSTE ;
+  owl:someValuesFrom :SpatioTemporalExtent ;
+  rdfs:subClassOf :Place
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :occursOver ;
+  owl:someValuesFrom :SpatioTemporalExtent ;
+  rdfs:subClassOf :Event-Concrete
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :ofType ;
+  owl:someValuesFrom :Event-Abstract ;
+  rdfs:subClassOf :Event-Concrete
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :pertainsTo ;
+  owl:someValuesFrom :SpatioTemporalExtent ;
+  rdfs:subClassOf :StateOfAffairs
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :possiblyCauses ;
+  owl:someValuesFrom :Event-Abstract ;
+  rdfs:subClassOf :PossiblyCausesRelation
+] .
+
+
+[ rdf:type owl:Restriction ;
+  owl:onProperty :resultsIn ;
+  owl:someValuesFrom :StateOfAffairs ;
+  rdfs:subClassOf :ResultsInRelation
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

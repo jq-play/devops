@@ -1,0 +1,13 @@
+# Interim stages of documentation output
+documentation/output.tex
+
+# unneccessary latex files
+documentation/main.log
+documentation/main.s*
+documentation/main.aux
+documentation/main.out
+documentation/main.lof
+documentation/main.toc
+
+# Cogan scratch work
+scratch.py
