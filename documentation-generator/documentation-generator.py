@@ -491,8 +491,8 @@ def generate_pattern_documentation(section_order, filename):
 
 def generate_all_documentation(directory):
     # Get all the patterns from the provided directory
-    print('inside pattern: ' + os.getcwd())
-    print('inside pattern: ' + os.listdir())
+    print('inside pattern: ' + str(os.getcwd()))
+    print('inside pattern: ' + str(os.listdir()))
     patterns = os.listdir(directory)
     # Nuke the previous contents of the file
     with open("../documentation/patterns.tex", "w") as output:
