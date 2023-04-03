@@ -543,6 +543,8 @@ if __name__ == "__main__":
     out = args.output
     workflow = args.workflow
 
+    print(os.listdir())
+
     # Additional work done if run in github action workflow
     if (workflow):
         os.chdir("workflow-test")
