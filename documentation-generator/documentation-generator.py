@@ -531,16 +531,9 @@ if __name__ == "__main__":
         help="Output directory"
     )
 
-    argParser.add_argument(
-        "--workflow",
-        action="store_true",
-        help="flag that simulate the script running in a GitHub Actions workflow"
-    )
-
     args = argParser.parse_args()
 
     input_dir = args.input
     out = args.output
-    workflow = args.workflow
 
     generate_all_documentation(input_dir, out)
