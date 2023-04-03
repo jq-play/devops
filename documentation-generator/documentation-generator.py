@@ -387,7 +387,7 @@ section_generator_map = {key: value for (key, value) in zip(section_names, secti
 # ======================
 
 
-def generate_preamble(contributors, acknowledgement):
+def generate_preamble(contributors, acknowledgement, output_dir):
     preamble_start = """\\setlrmarginsandblock{1in}{1in}{*}
 \\setulmarginsandblock{1in}{1in}{*}
 \\checkandfixthelayout
@@ -450,13 +450,13 @@ def generate_preamble(contributors, acknowledgement):
 \\chapterstyle{tandh}
 \\pagestyle{simple}"""
 
-    with open("../documentation/preamble.tex", "w") as output:
+    with open(f"{output_dir}/preamble.tex", "w") as output:
         preamble = preamble_start + preamble_contributors + preamble_date
         preamble += "{" + acknowledgement + "}\n\n" + preamble_end
         output.write(preamble)
 
 
-def generate_pattern_documentation(section_order, filename):
+def generate_pattern_documentation(section_order, filename, output_dir):
     g = rdflib.Graph()
     g.parse(filename, format="ttl")
 
@@ -469,7 +469,7 @@ def generate_pattern_documentation(section_order, filename):
     for section in section_order:
         documentation += section_generator_map[section](g) + "\n"
 
-    with open("../documentation/patterns.tex", "a") as output:
+    with open(f"{output_dir}/patterns.tex", "a") as output:
         output.write("%"*35+"\n")
         output.write("\\section{" + pattern_name + "}\n")
         output.write("\\label{sec:" + generate_label(pattern_name) + "}\n")
@@ -489,13 +489,11 @@ def generate_pattern_documentation(section_order, filename):
     return creators
 
 
-def generate_all_documentation(directory):
+def generate_all_documentation(directory, output_dir):
     # Get all the patterns from the provided directory
-    print('inside pattern: ' + str(os.getcwd()))
-    print('inside pattern: ' + str(os.listdir()))
     patterns = os.listdir(directory)
     # Nuke the previous contents of the file
-    with open("../documentation/patterns.tex", "w") as output:
+    with open(f"{output_dir}/patterns.tex", "w") as output:
         output.write("\\chapter{Patterns}\n")
         output.write("\\label{sec:mods}\n")
         output.write("%"*35+"\n")
@@ -509,10 +507,10 @@ def generate_all_documentation(directory):
     contributors = set()
     for pattern in patterns:
         pattern_file = os.path.join(directory, pattern)
-        pattern_contributors = generate_pattern_documentation(section_order, pattern_file)
+        pattern_contributors = generate_pattern_documentation(section_order, pattern_file, output_dir)
         contributors.update(pattern_contributors)
     # Regenerate the preamble
-    generate_preamble(contributors, acknowledgement)
+    generate_preamble(contributors, acknowledgement, output_dir)
 
 
 if __name__ == "__main__":
@@ -529,7 +527,7 @@ if __name__ == "__main__":
     argParser.add_argument(
         "output",
         nargs="*",
-        default="../patterns",
+        default="../documentation",
         help="Output directory"
     )
 
@@ -545,14 +543,4 @@ if __name__ == "__main__":
     out = args.output
     workflow = args.workflow
 
-    print(os.getcwd())
-    # Additional work done if run in github action workflow
-    if (workflow):
-        os.chdir("workflow-test/workflow-test")
-
-    print(os.getcwd())
-    print(os.listdir())
-    print(os.getcwd())
-    print(os.listdir('workflow-test'))
-
-    generate_all_documentation(input_dir)
+    generate_all_documentation(input_dir, out)
