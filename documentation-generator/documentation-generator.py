@@ -534,6 +534,6 @@ if __name__ == "__main__":
     args = argParser.parse_args()
 
     input_dir = args.input
-    out = args.output
+    out = args.output[0]
 
     generate_all_documentation(input_dir, out)
