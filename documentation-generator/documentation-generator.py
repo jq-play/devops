@@ -543,10 +543,14 @@ if __name__ == "__main__":
     out = args.output
     workflow = args.workflow
 
+    print(os.getcwd())
     # Additional work done if run in github action workflow
     if (workflow):
         os.chdir("workflow-test")
 
+    print(os.getcwd())
     print(os.listdir())
+    print(os.getcwd())
+    print(os.listdir('workflow-test'))
 
     generate_all_documentation(input_dir)
