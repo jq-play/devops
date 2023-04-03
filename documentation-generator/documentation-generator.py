@@ -1,5 +1,6 @@
 import os
 import re
+import glob
 import argparse
 
 import rdflib
@@ -491,7 +492,7 @@ def generate_pattern_documentation(section_order, filename, output_dir):
 
 def generate_all_documentation(directory, output_dir):
     # Get all the patterns from the provided directory
-    patterns = os.listdir(directory)
+    patterns = glob.glob("**/*.owl", root_dir=directory)
     # Nuke the previous contents of the file
     with open(f"{output_dir}/patterns.tex", "w") as output:
         output.write("\\chapter{Patterns}\n")
