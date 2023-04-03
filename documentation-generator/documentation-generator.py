@@ -515,28 +515,36 @@ def generate_all_documentation(directory):
 
 if __name__ == "__main__":
     argParser = argparse.ArgumentParser(
-        prog='workflow testing',
-        epilog='workflow testing'
+        prog="workflow testing",
+        epilog="workflow testing"
     )
 
     argParser.add_argument(
-        'input',
-        help='Input directory'
+        "input",
+        help="Input directory"
     )
 
     argParser.add_argument(
-        'output',
-        nargs='*',
-        default=None,
-        help='Output directory'
+        "output",
+        nargs="*",
+        default="../patterns",
+        help="Output directory"
+    )
+
+    argParser.add_argument(
+        "--workflow",
+        action="store_true",
+        help="flag that simulate the script running in a GitHub Actions workflow"
     )
 
     args = argParser.parse_args()
 
     input_dir = args.input
-    out = args.output or input_dir
+    out = args.output
+    workflow = args.workflow
 
-    # os.chdir('workflow-test')
-    print(input_dir + " " + out)
+    # Additional work done if run in github action workflow
+    if (workflow):
+        os.chdir("workflow-test")
 
     generate_all_documentation(input_dir)
