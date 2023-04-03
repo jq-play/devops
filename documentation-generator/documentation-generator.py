@@ -548,7 +548,7 @@ if __name__ == "__main__":
     print(os.getcwd())
     # Additional work done if run in github action workflow
     if (workflow):
-        os.chdir("workflow-test")
+        os.chdir("workflow-test/workflow-test")
 
     print(os.getcwd())
     print(os.listdir())
